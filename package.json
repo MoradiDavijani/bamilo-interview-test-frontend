@@ -19,17 +19,22 @@
   "homepage": "https://github.com/MoradiDavijani/bamilo-interview-test-frontend#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
     "babel-preset-env": "^1.6.0",
-    "babelify": "^7.3.0",
     "grunt": "^1.0.1",
-    "grunt-browserify": "^5.2.0",
+    "grunt-babel": "^7.0.0",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^20.1.0",
     "grunt-include-source": "^1.1.0",
     "grunt-sass": "^2.0.0",
     "grunt-sass-lint": "^0.2.4"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "requirejs": "^2.3.5"
   }
 }
