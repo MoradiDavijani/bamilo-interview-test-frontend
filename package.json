@@ -1,0 +1,35 @@
+{
+  "name": "bamilo-interview-test-frontend",
+  "version": "0.0.1",
+  "description": "Frontend for the test project in Bamilo interview",
+  "scripts": {
+    "test": "grunt lint",
+    "start": "NODE_ENV=dev grunt build",
+    "build": "NODE_ENV=production grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoradiDavijani/bamilo-interview-test-frontend.git"
+  },
+  "author": "moradidavijani@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MoradiDavijani/bamilo-interview-test-frontend/issues"
+  },
+  "homepage": "https://github.com/MoradiDavijani/bamilo-interview-test-frontend#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babelify": "^7.3.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^20.1.0",
+    "grunt-include-source": "^1.1.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-sass-lint": "^0.2.4"
+  }
+}
