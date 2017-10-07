@@ -2,7 +2,8 @@ module.exports = function (grunt) {
 	
 	// CONFIGURE GRUNT
 	
-	let isDev = process.env.NODE_ENV === 'dev'
+	let isDev = process.env.NODE_ENV === 'dev',
+	    modRewrite = require('connect-modrewrite');
 	
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -11,7 +12,7 @@ module.exports = function (grunt) {
 			options: {
 				configFile: '.eslintrc.json'
 			},
-			target: 'src/scripts/**/*.js'
+			target: ['src/scripts/**/*.js', '!src/scripts/lib/*.js']
 		},
 		sasslint: {
 			options: {
@@ -30,6 +31,8 @@ module.exports = function (grunt) {
 		babel: {
 			options: {
 				sourceMap: isDev,
+				minified: !isDev,
+				comments: isDev,
 				presets: ['env'],
 				plugins: ['transform-es2015-modules-amd']
 			},
@@ -93,11 +96,17 @@ module.exports = function (grunt) {
 		connect: {
 			server: {
 				options: {
-					port: 8000,
+					port: process.env.PORT || 8000,
 					livereload: isDev,
 					keepalive: !isDev,
 					hostname: '*',
-					open: false
+					base: '.',
+					open: false,
+					middleware: function(connect, options, middlewares) {
+						middlewares.unshift(modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']));
+						
+						return middlewares;
+					}
 				}
 			}
 		},

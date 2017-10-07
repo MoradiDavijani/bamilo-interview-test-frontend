@@ -1,14 +1,10 @@
-import name from './test'
+import $ from 'jquery'
+import * as router from './router'
 
-const $ = require('jquery')
+console.info('Application Started')
 
-let a = `
-hello there...
-I am ${name}
-`
+router.init()
 
 $(document).ready(() => {
 	$('.splash-screen').fadeOut(1000)
 })
-
-console.log(a)
