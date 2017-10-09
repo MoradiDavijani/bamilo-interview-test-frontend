@@ -1,8 +1,9 @@
 section.splash-screen {
   background: white url('../images/logo.png') center/10rem no-repeat;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 10000;
 }

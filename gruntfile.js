@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 		},
 		clean: {
 			build: {
-				src: ['dist/styles/app.css']
+				src: ['dist/styles/*.css', '!dist/styles/*.min.css']
 			},
 			old: {
 				src: ['dist']
@@ -48,10 +48,11 @@ module.exports = function (grunt) {
 		sass: {
 			dist: {
 				options: {
-					sourcemap: isDev ? true : 'none'
+					sourcemap: isDev ? true : 'none',
+					precision: 8
 				},
 				files: {
-					'dist/styles/app.css': 'src/styles/app.scss'
+					'dist/styles/main.css': 'src/styles/main.scss'
 				}
 			}
 		},
@@ -60,7 +61,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					cwd: 'dist/styles',
-					src: 'app.css',
+					src: '*.css',
 					dest: 'dist/styles',
 					ext: '.min.css'
 				}]
@@ -83,7 +84,7 @@ module.exports = function (grunt) {
 		},
 		app: {
 			styles: [
-				`dist/styles/app${isDev ? '' : '.min'}.css`
+				`dist/styles/main${isDev ? '' : '.min'}.css`
 			]
 		},
 		includeSource: {
@@ -122,6 +123,10 @@ module.exports = function (grunt) {
 			html: {
 				files: ['index.template.html'],
 				tasks: ['includeSource']
+			},
+			assets: {
+				files: ['src/views/**/*.html', 'src/images/**/*.*'],
+				tasks: ['copy']
 			},
 			scripts: {
 				files: ['src/scripts/**/*.js'],

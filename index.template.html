@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bamilo Frontend</title>
     <!-- !DO NOT EDIT! auto-generated includes, see gruntfile.js -->
     <!-- include: "type": "css", "files": "<%= app.styles %>" -->
@@ -9,22 +10,16 @@
     <!-- /include -->
     <!-- endbuild -->
 </head>
-<body>
+<body layout="column" flex-grow>
 <section class="splash-screen"></section>
-
-<ul>
-    <li>
-        <a href="/">Home</a>
-    </li>
-    <li>
-        <a href="/products">Products</a>
-    </li>
-    <li>
-        <a href="/admin-panel">Admin Panel</a>
-    </li>
-</ul>
-
-<section id="content"></section>
+<section class="wrapper" id="content" layout="column" flex></section>
+<section class="footer">
+    <div class="container">
+        <span class="text-muted">© Bamilo Test Project By
+            <a href="https://www.linkedin.com/in/moradi-davijani/">Hossein Moradi</a>
+        </span>
+    </div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js" data-main="index"></script>
 </body>

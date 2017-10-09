@@ -1,0 +1,11 @@
+.home-page {
+  .btn {
+    min-width: 200px;
+  }
+  .products {
+    background-color: theme-color("primary");
+  }
+  .admin-panel {
+    background-color: theme-color("secondary");
+  }
+}
