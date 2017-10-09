@@ -1,0 +1,9 @@
+.login-page {
+  background-color: theme-color("secondary");
+  .card-body {
+    background-color: $gray-100;
+    .card-title {
+      color: $gray-700;
+    }
+  }
+}

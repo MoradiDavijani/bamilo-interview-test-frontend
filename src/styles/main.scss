@@ -1,5 +1,6 @@
 @import "bootstrap-custom";
-@import "angular-material-layout";
-@import "base";
-@import "splash";
-@import "home";
+@import "./components/angular-material-layout";
+@import "./components/base";
+@import "./components/splash";
+@import "./pages/home";
+@import "./pages/login";
