@@ -1,4 +1,6 @@
+import page from 'page'
 import $ from 'jquery'
+import toastr from 'toastr'
 
 let serverInstance
 
@@ -43,7 +45,12 @@ class Server {
 			method,
 			success: onSuccess,
 			error: (error) => {
-				console.log(error)
+				if (error.status === 403) {
+					page.redirect('/admin-panel/login')
+				}
+				if (error && error.responseJSON && error.responseJSON.message) {
+					toastr.error(error.responseJSON.message, error.statusText)
+				}
 				onError(error)
 			}
 		})

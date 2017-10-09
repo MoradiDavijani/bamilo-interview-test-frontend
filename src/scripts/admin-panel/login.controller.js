@@ -31,8 +31,6 @@ class LoginPage {
 						localStorage.setItem('token', result.token)
 						page.redirect('/admin-panel/products')
 					}
-				}, (error) => {
-				
 				})
 			}
 			
