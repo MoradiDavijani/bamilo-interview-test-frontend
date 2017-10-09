@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import * as router from './router'
+import * as router from './app.router'
 
 console.info('Application Started')
 

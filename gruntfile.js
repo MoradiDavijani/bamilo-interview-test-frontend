@@ -89,8 +89,8 @@ module.exports = function (grunt) {
 		},
 		includeSource: {
 			options: {
-				basePath: './',
-				baseUrl: '',
+				basePath: '',
+				baseUrl: '/',
 				ordering: 'top-down'
 			},
 			app: {
