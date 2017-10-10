@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import ServerSingleton from '../helpers/server'
+import * as sidebar from '../helpers/sidebar'
 
 const server = new ServerSingleton()
 
@@ -17,6 +18,7 @@ class AdminProductsPage {
 	
 	init () {
 		this.fetchProducts()
+		sidebar.changePage('products')
 		this.$reload.click(() => {
 			this.fetchProducts()
 		})

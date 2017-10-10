@@ -16,4 +16,10 @@ const init = () => {
 		})
 }
 
-export { init }
+const changePage = (page) => {
+	let sidenav = $('nav.sidebar')
+	sidenav.find('.nav-link').removeClass('active')
+	sidenav.find(`.nav-link[href="/admin-panel/${page}"]`).addClass('active')
+}
+
+export { init, changePage }
