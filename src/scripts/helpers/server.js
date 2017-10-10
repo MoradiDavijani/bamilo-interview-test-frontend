@@ -46,7 +46,7 @@ class Server {
 			success: onSuccess,
 			error: (error) => {
 				if (error.status === 403) {
-					page.redirect('/admin-panel/login')
+					page.redirect('/login')
 				}
 				if (error && error.responseJSON && error.responseJSON.message) {
 					toastr.error(error.responseJSON.message, error.statusText)

@@ -1,4 +1,5 @@
 .sidebar {
+  z-index: 10000;
   min-width: $sidebarWidth;
   max-width: $sidebarWidth;
   background-color: $gray-400;

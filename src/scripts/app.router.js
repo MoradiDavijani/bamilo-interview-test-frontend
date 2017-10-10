@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import page from 'page'
+import * as auth from './helpers/auth'
 
 const $container = $('[content-placeholder="main"]'),
 	routes = {
@@ -8,36 +9,36 @@ const $container = $('[content-placeholder="main"]'),
 			view: 'home',
 			title: 'Home Page'
 		},
-		'products': {
+		products: {
 			controller: 'products',
 			view: 'products',
 			title: 'Products'
+		},
+		login: {
+			controller: 'login',
+			view: 'login',
+			title: 'Login'
 		},
 		'admin-panel': {
 			controller: 'admin-panel',
 			title: 'Admin Panel',
 			routes: {
-				'login': {
-					controller: 'login',
-					view: 'login',
-					title: 'Login'
-				},
-				'products': {
+				products: {
 					controller: 'products',
 					view: 'products',
 					title: 'Products List'
 				},
-				'categories': {
+				categories: {
 					controller: 'categories',
 					view: 'categories',
 					title: 'Categories List'
 				},
-				'attributes': {
+				attributes: {
 					controller: 'attributes',
 					view: 'attributes',
 					title: 'Attributes List'
 				},
-				'users': {
+				users: {
 					controller: 'users',
 					view: 'users',
 					title: 'Users List'
@@ -58,7 +59,7 @@ const registerRoutes = (routesConfig, baseDir) => {
 	let currentDir = baseDir ? baseDir.split('/').pop() : ''
 	Object.keys(routesConfig).forEach((path) => {
 		let route = routesConfig[path]
-		page(`/${baseDir}${baseDir && path ? '/' : ''}${path}`, () => {
+		page(`/${baseDir}${baseDir && path ? '/' : ''}${path}`, auth.check, () => {
 			document.title = route.title
 			let dependencies = [
 				`${baseDir}${baseDir ? '' : `${route.controller}`}/${route.controller}.controller`
