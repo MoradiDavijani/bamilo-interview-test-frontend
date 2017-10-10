@@ -16,39 +16,39 @@ const init = function() {
 class AdminUsersPage {
 	constructor () {
 		this.$collapsible = $('#newItemForm')
-		this.$userForm = this.$collapsible.find('form[name="userForm"]')
+		this.$itemForm = this.$collapsible.find('form[name="userForm"]')
 		this.$newItem = $('#newItem')
-		this.$id = this.$userForm.find('#_id')
-		this.$username = this.$userForm.find('#username')
-		this.$password = this.$userForm.find('#password')
-		this.formValidator = new FormValidator(this.$userForm)
+		this.$id = this.$itemForm.find('#_id')
+		this.$username = this.$itemForm.find('#username')
+		this.$password = this.$itemForm.find('#password')
+		this.formValidator = new FormValidator(this.$itemForm)
 		this.$table = $('.admin-users-page table tbody')
 		this.$reload = $('#reload')
-		this.actionButtons = '<button class="btn btn-primary edit mr-3">Edit</button>' +
+		this.actionButtons = '<button class="btn btn-primary edit mr-1">Edit</button>' +
 			'<button class="btn btn-danger delete">Delete</button>'
 	}
 	
 	init () {
-		this.fetchUsers()
+		this.fetchItems()
 		sidebar.changePage('users')
 		this.$reload.click(() => {
-			this.fetchUsers()
+			this.fetchItems()
 		})
-		this.$userForm.on('submit', (e) => {
+		this.$itemForm.on('submit', (e) => {
 			e.preventDefault()
 			if (this.formValidator.validate()) {
-				this.saveUser()
+				this.saveItem()
 			}
 			
 		})
 		this.$table.on('click', '.edit', (e) => {
 			let $tr = $(e.target).closest('tr')
-			this.populateUserForm($tr)
+			this.populateForm($tr)
 		})
 		this.$table.on('click', '.delete', (e) => {
 			let $tr = $(e.target).closest('tr'),
 				id = $tr.data('id')
-			id && this.deleteUser(id)
+			id && this.deleteItem(id)
 		})
 		this.$newItem.click(() => {
 			if (this.$collapsible.is('.show')) {
@@ -67,7 +67,7 @@ class AdminUsersPage {
 		})
 	}
 	
-	fetchUsers () {
+	fetchItems () {
 		this.$table.addClass('loading')
 		server.fetch('/users', (users) => {
 			this.$table.html('')
@@ -90,29 +90,29 @@ class AdminUsersPage {
 		})
 	}
 	
-	saveUser () {
-		this.$userForm.addClass('loading')
+	saveItem () {
+		this.$itemForm.addClass('loading')
 		server.save('/users', {
 			_id: this.$id.val(),
 			username: this.$username.val(),
 			password: this.$password.val()
 		}, () => {
-			this.fetchUsers()
+			this.fetchItems()
 		}, null, () => {
-			this.$userForm.find('input').val('')
-			this.$userForm.removeClass('loading')
+			this.$itemForm.find('input').val('')
+			this.$itemForm.removeClass('loading')
 			this.$collapsible.collapse('hide')
 		})
 	}
 	
-	deleteUser (id) {
+	deleteItem (id) {
 		this.$table.addClass('loading')
 		server.delete('/users', id, null, null, () => {
-			this.fetchUsers()
+			this.fetchItems()
 		})
 	}
 	
-	populateUserForm ($tr) {
+	populateForm ($tr) {
 		this.$id.val($tr.data('id'))
 		this.$username.val($tr.find('td[data-field="username"]').text())
 		this.$password.val('')
