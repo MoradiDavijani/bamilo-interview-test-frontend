@@ -1,8 +1,7 @@
 .loading {
   position: relative;
   &::before {
-    content: 'Loading...';
-    padding-top: 40%;
+    content: '';
     text-align: center;
     background-color: rgba($white, .8);
     position: absolute;
