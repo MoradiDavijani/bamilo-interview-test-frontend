@@ -13,16 +13,17 @@ const init = function() {
 
 class LoginPage {
 	constructor () {
-		this.loginForm = $('form[name="loginForm"]')
+		this.$loginForm = $('form[name="loginForm"]')
 		this.$username = $('#username')
 		this.$password = $('#password')
-		this.formValidator = new FormValidator(this.loginForm)
+		this.formValidator = new FormValidator(this.$loginForm)
 	}
 	
 	init () {
-		this.loginForm.on('submit', (e) => {
+		this.$loginForm.on('submit', (e) => {
 			e.preventDefault()
 			if (this.formValidator.validate()) {
+				this.$loginForm.addClass('loading')
 				server.save('/auth', {
 					username: this.$username.val(),
 					password: this.$password.val()
@@ -31,6 +32,8 @@ class LoginPage {
 						localStorage.setItem('token', result.token)
 						page.redirect('/admin-panel/products')
 					}
+				}, null, () => {
+					this.$loginForm.removeClass('loading')
 				})
 			}
 			

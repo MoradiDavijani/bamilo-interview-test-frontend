@@ -18,23 +18,23 @@ class Server {
 		this.url = 'https://bamilo-interview-test.herokuapp.com'
 	}
 	
-	fetch (route, onSuccess, onError) {
-		this._request('GET', route, onSuccess, onError)
+	fetch (route, onSuccess, onError, onComplete) {
+		this._request('GET', route, onSuccess, onError, onComplete)
 	}
 	
-	save (route, data, onSuccess, onError) {
-		this._request('POST', route, onSuccess, onError, data)
+	save (route, data, onSuccess, onError, onComplete) {
+		this._request('POST', route, onSuccess, onError, onComplete, data)
 	}
 	
-	update (route, data, onSuccess, onError) {
-		this._request('PUT', route, onSuccess, onError, data)
+	update (route, data, onSuccess, onError, onComplete) {
+		this._request('PUT', route, onSuccess, onError, onComplete, data)
 	}
 	
-	delete (route, onSuccess, onError) {
-		this._request('DELETE', route, onSuccess, onError)
+	delete (route, onSuccess, onError, onComplete) {
+		this._request('DELETE', route, onSuccess, onError, onComplete)
 	}
 	
-	_request (method, route, onSuccess, onError, data) {
+	_request (method, route, onSuccess, onError, onComplete, data) {
 		let token = localStorage.getItem('token')
 		$.ajax({
 			url: `${this.url}${route}`,
@@ -51,8 +51,9 @@ class Server {
 				if (error && error.responseJSON && error.responseJSON.message) {
 					toastr.error(error.responseJSON.message, error.statusText)
 				}
-				onError(error)
-			}
+				onError && onError(error)
+			},
+			complete: onComplete
 		})
 	}
 }

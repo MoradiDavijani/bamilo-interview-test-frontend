@@ -7,6 +7,7 @@ console.info('Application Started')
 router.init()
 
 toastr.options.closeButton = true
+toastr.options.timeOut = 2000
 toastr.options.closeDuration = 0
 toastr.options.progressBar = true
 
