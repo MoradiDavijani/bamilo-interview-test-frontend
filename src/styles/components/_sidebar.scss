@@ -23,19 +23,22 @@
   max-height: $footerHeight;
   background-color: theme-color("primary");
 
+  button {
+    cursor: pointer;
+  }
   .sidebar-toggle {
     cursor: pointer;
     background-color: theme-color("secondary");
     .icon {
-      background: url("../images/menu.svg") center/#{$footerHeight / 2} no-repeat;
+      background: url("../images/menu.svg") center/#{$footerHeight / 4} no-repeat;
       cursor: pointer;
       display: inline-block;
-      height: $footerHeight / 2;
-      width: $footerHeight / 2;
+      height: $footerHeight / 4;
+      width: $footerHeight / 4;
     }
     &.active {
       .icon {
-        background: url("../images/close.svg") center/#{$footerHeight / 2} no-repeat;
+        background: url("../images/close.svg") center/#{$footerHeight / 4} no-repeat;
       }
     }
   }
