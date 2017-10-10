@@ -1,17 +1,36 @@
-<div class="admin-panel-base">
-    <section class="side-nav">
-        <h1>Hello side-nav</h1>
-        <ul>
-            <li>
-                <a href="/admin-panel/products">Products</a>
-            </li>
-            <li>
-                <a href="/admin-panel/categories">Categories</a>
-            </li>
-            <li>
-                <a href="/admin-panel/attributes">Attributes</a>
-            </li>
-        </ul>
-    </section>
-    <section content-placeholder="admin-panel"></section>
+<div class="admin-panel-base" layout="column" flex>
+    <div class="top-header" layout="row">
+        <button type="button" class="btn sidebar-toggle" layout="column" layout-align="center center">
+            <span class="icon"></span>
+        </button>
+    </div>
+    <div layout="row" layout-align="stretch center" flex-grow>
+        <nav class="sidebar">
+            <div class="sidebar-header p-3">
+                <h5>Admin Panel</h5>
+            </div>
+            <div class="dropdown-divider"></div>
+            <ul class="nav nav-pills" layout="column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin-panel/products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-panel/categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-panel/attributes">Attributes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-panel/users">Users</a>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home Page</a>
+                </li>
+            </ul>
+        </nav>
+        <section class="p-3" flex>
+            <section content-placeholder="admin-panel"></section>
+        </section>
+    </div>
 </div>

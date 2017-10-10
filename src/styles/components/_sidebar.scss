@@ -1,0 +1,41 @@
+.sidebar {
+  min-width: $sidebarWidth;
+  max-width: $sidebarWidth;
+  background-color: $gray-400;
+  transition: all .2s linear;
+  margin-left: -$sidebarWidth;
+  &.active {
+    margin-left: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    position: absolute;
+    top: $footerHeight;
+    bottom: $footerHeight;
+    box-shadow: $popover-box-shadow;
+  }
+}
+
+.top-header {
+  height: $footerHeight;
+  min-height: $footerHeight;
+  max-height: $footerHeight;
+  background-color: theme-color("primary");
+
+  .sidebar-toggle {
+    cursor: pointer;
+    background-color: theme-color("secondary");
+    .icon {
+      background: url("../images/menu.svg") center/#{$footerHeight / 2} no-repeat;
+      cursor: pointer;
+      display: inline-block;
+      height: $footerHeight / 2;
+      width: $footerHeight / 2;
+    }
+    &.active {
+      .icon {
+        background: url("../images/close.svg") center/#{$footerHeight / 2} no-repeat;
+      }
+    }
+  }
+}

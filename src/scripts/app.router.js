@@ -36,6 +36,11 @@ const $container = $('[content-placeholder="main"]'),
 					controller: 'attributes',
 					view: 'attributes',
 					title: 'Attributes List'
+				},
+				'users': {
+					controller: 'users',
+					view: 'users',
+					title: 'Users List'
 				}
 			}
 		}
