@@ -23,20 +23,24 @@ class LoginPage {
 		this.$loginForm.on('submit', (e) => {
 			e.preventDefault()
 			if (this.formValidator.validate()) {
-				this.$loginForm.addClass('loading')
-				server.save('/auth', {
-					username: this.$username.val(),
-					password: this.$password.val()
-				}, (result) => {
-					if (result && result.token) {
-						localStorage.setItem('token', result.token)
-						page.redirect('/admin-panel/products')
-					}
-				}, null, () => {
-					this.$loginForm.removeClass('loading')
-				})
+				this.login()
 			}
 			
+		})
+	}
+	
+	login () {
+		this.$loginForm.addClass('loading')
+		server.save('/auth', {
+			username: this.$username.val(),
+			password: this.$password.val()
+		}, (result) => {
+			if (result && result.token) {
+				localStorage.setItem('token', result.token)
+				page.redirect('/admin-panel/products')
+			}
+		}, null, () => {
+			this.$loginForm.removeClass('loading')
 		})
 	}
 }
