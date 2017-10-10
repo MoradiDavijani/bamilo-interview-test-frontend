@@ -23,15 +23,17 @@ class Server {
 	}
 	
 	save (route, data, onSuccess, onError, onComplete) {
-		this._request('POST', route, onSuccess, onError, onComplete, data)
+		if (data._id) {
+			this._request('PUT', `${route}/${data._id}`, onSuccess, onError, onComplete, data)
+		}
+		else {
+			delete data._id
+			this._request('POST', route, onSuccess, onError, onComplete, data)
+		}
 	}
 	
-	update (route, data, onSuccess, onError, onComplete) {
-		this._request('PUT', route, onSuccess, onError, onComplete, data)
-	}
-	
-	delete (route, onSuccess, onError, onComplete) {
-		this._request('DELETE', route, onSuccess, onError, onComplete)
+	delete (route, id, onSuccess, onError, onComplete) {
+		this._request('DELETE', `${route}/${id}`, onSuccess, onError, onComplete)
 	}
 	
 	_request (method, route, onSuccess, onError, onComplete, data) {
@@ -46,6 +48,7 @@ class Server {
 			success: onSuccess,
 			error: (error) => {
 				if (error.status === 403) {
+					localStorage.removeItem('token')
 					page.redirect('/login')
 				}
 				if (error && error.responseJSON && error.responseJSON.message) {
