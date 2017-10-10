@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import page from 'page'
 
-const $container = $('#content'),
+const $container = $('[content-placeholder="main"]'),
 	routes = {
 		'': {
 			controller: 'home',
@@ -26,6 +26,16 @@ const $container = $('#content'),
 					controller: 'products',
 					view: 'products',
 					title: 'Products List'
+				},
+				'categories': {
+					controller: 'categories',
+					view: 'categories',
+					title: 'Categories List'
+				},
+				'attributes': {
+					controller: 'attributes',
+					view: 'attributes',
+					title: 'Attributes List'
 				}
 			}
 		}
@@ -40,6 +50,7 @@ const registerRoutes = (routesConfig, baseDir) => {
 	if (!routesConfig) {
 		return
 	}
+	let currentDir = baseDir ? baseDir.split('/').pop() : ''
 	Object.keys(routesConfig).forEach((path) => {
 		let route = routesConfig[path]
 		page(`/${baseDir}${baseDir && path ? '/' : ''}${path}`, () => {
@@ -50,8 +61,19 @@ const registerRoutes = (routesConfig, baseDir) => {
 			if (route.view) {
 				dependencies.push(`text!../views/${baseDir}/${route.view}.html`)
 			}
-			require(dependencies, (controllerModule, text) => {
-				$container.html(text)
+			if (currentDir) {
+				dependencies.push(`text!../views/${baseDir}/${currentDir}.html`)
+			}
+			require(dependencies, (controllerModule, text, baseText) => {
+				let $baseContainer
+				if (baseText) {
+					$container.html(baseText)
+					$baseContainer = $(`[content-placeholder="${currentDir}"]`)
+					$baseContainer.html(text)
+				}
+				else {
+					$container.html(text)
+				}
 				controllerModule.init()
 			})
 		})

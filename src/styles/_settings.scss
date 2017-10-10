@@ -48,6 +48,9 @@ $theme-colors: (
 );
 
 $enable-rounded: false;
+$enable-shadows: false;
 $enable-grid-classes: false;
 $paragraph-margin-bottom: 0;
-$font-size-base: .8rem
+$font-size-base: .8rem;
+$btn-focus-box-shadow: none !important;
+$btn-active-box-shadow: none !important;
