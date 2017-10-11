@@ -103,8 +103,7 @@ class AdminAttributesPage {
 		}, () => {
 			this.fetchItems()
 		}, null, () => {
-			this.$itemForm.find('input').val('')
-			this.$itemForm.find('textarea').val('')
+			this.$itemForm.find('input, textarea, select').val('')
 			this.$itemForm.removeClass('loading')
 			this.$collapsible.collapse('hide')
 		})

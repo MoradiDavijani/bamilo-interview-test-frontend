@@ -31,3 +31,13 @@ body {
 button:focus {
   outline: none !important;
 }
+
+.form-group {
+  min-width: 200px;
+
+  &.is-invalid {
+    .invalid-feedback {
+      display: block;
+    }
+  }
+}

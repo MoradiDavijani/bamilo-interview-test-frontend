@@ -40,6 +40,8 @@
     "jquery": "^3.2.1",
     "pre-git": "^3.15.3",
     "requirejs": "^2.3.5",
+    "selectize": "^0.12.4",
+    "selectize-scss": "^0.9.2",
     "text": "github:requirejs/text",
     "toastr": "^2.1.2"
   },

@@ -7,21 +7,26 @@ class FormValidator {
 	
 	validate () {
 		let isValid = true,
-			inputs = this.form.find('input')
+			inputs = this.form.find('input, select, textarea')
 		inputs.each((index, input) => {
-			let $input = $(input)
+			let $input = $(input),
+				$formGroup = $input.closest('.form-group')
+			
+			if ($input.is('[data-novalidate]')) {
+				return
+			}
 			if (!input.value && input.required) {
-				$input.addClass('is-invalid')
+				$formGroup.addClass('is-invalid')
 				isValid = false
 				return
 			}
 			
 			if (input.value.length < input.minLength) {
-				$input.addClass('is-invalid')
+				$formGroup.addClass('is-invalid')
 				isValid = false
 				return
 			}
-			$input.removeClass('is-invalid')
+			$formGroup.removeClass('is-invalid')
 		})
 		return isValid
 	}

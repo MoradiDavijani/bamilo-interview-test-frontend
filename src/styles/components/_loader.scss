@@ -2,6 +2,7 @@
   position: relative;
   &::before {
     content: '';
+    z-index: 2000;
     text-align: center;
     background-color: rgba($white, .8);
     position: absolute;
