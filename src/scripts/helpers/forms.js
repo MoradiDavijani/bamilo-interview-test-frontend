@@ -28,6 +28,14 @@ class FormValidator {
 			}
 			$formGroup.removeClass('is-invalid')
 		})
+		
+		if (!isValid) {
+			let invalidElements = this.form.find('.is-invalid')
+			$('html, body').animate({
+				scrollTop: $(invalidElements[0]).offset().top
+			}, 200)
+		}
+		
 		return isValid
 	}
 }
