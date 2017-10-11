@@ -43,6 +43,7 @@ class AdminProductsPage {
 		this.$categorySelect = this.$category.selectize({
 			valueField: '_id',
 			labelField: 'title',
+			searchField: 'title',
 			placeholder: 'Select category',
 			openOnFocus: false,
 			create: false,
