@@ -29,8 +29,8 @@ class AdminCategoriesPage {
 		this.$treeview = $('#treeview')
 		this.$reload = $('#reload')
 		this.actionButtons = '<div data-id="categoryId" class="float-right">' +
-			'<button class="btn btn-primary edit mr-1">Edit</button>' +
-			'<button class="btn btn-danger delete">Delete</button>' +
+			'<button class="treeview-button btn btn-primary edit mr-1">Edit</button>' +
+			'<button class="treeview-button btn btn-danger delete">Delete</button>' +
 			'</div>'
 	}
 	
@@ -83,11 +83,22 @@ class AdminCategoriesPage {
 			
 		})
 		$(document)
+		// I know... but I have to, because of bootstrap treeview problem!
 			.on('click', '.edit', (e) => {
+				if (!$(e.target).is('.treeview-button')) {
+					// This is to prevent conflict in other pages
+					// ToDo: fix this!
+					return
+				}
 				let $tr = $(e.target).closest('[data-id]')
 				this.populateForm($tr)
 			})
-			.on('click', '.delete', (e) => {
+			.on('click', '.admin-categories-page #treeview .delete', (e) => {
+				if (!$(e.target).is('.treeview-button')) {
+					// This is to prevent conflict in other pages
+					// ToDo: fix this!
+					return
+				}
 				let $tr = $(e.target).closest('[data-id]'),
 					id = $tr.data('id')
 				id && this.deleteItem(id)
