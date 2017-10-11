@@ -33,7 +33,6 @@ class AdminCategoriesPage {
 				selectable: false,
 				nodes: this.treeviewAdapter(categories)
 			}]
-			console.log(data)
 			this.$treeview.treeview({ data, levels: 2 })
 			this.$treeview.removeClass('loading')
 		})

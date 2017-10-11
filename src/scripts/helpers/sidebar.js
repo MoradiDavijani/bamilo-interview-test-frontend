@@ -12,14 +12,15 @@ const init = () => {
 		})
 		.on('click', '#logout', function() {
 			localStorage.removeItem('token')
+			delete window.app.user
 			page.redirect('/login')
 		})
 }
 
 const changePage = (page) => {
-	let sidenav = $('nav.sidebar')
-	sidenav.find('.nav-link').removeClass('active')
-	sidenav.find(`.nav-link[href="/admin-panel/${page}"]`).addClass('active')
+	let sidebar = $('nav.sidebar')
+	sidebar.find('.nav-link').removeClass('active')
+	sidebar.find(`.nav-link[href="/admin-panel/${page}"]`).addClass('active')
 }
 
 export { init, changePage }
