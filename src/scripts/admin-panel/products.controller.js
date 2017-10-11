@@ -43,7 +43,7 @@ class AdminProductsPage {
 		this.$categorySelect = this.$category.selectize({
 			valueField: '_id',
 			labelField: 'title',
-			searchField: 'title',
+			placeholder: 'Select category',
 			openOnFocus: false,
 			create: false,
 			load: function(query, callback) {
@@ -58,11 +58,9 @@ class AdminProductsPage {
 				this.populateAttributes(categoryId)
 			}
 		})
-		
 		this.$reload.click(() => {
 			this.fetchItems()
 		})
-		
 		this.$itemForm.on('submit', (e) => {
 			e.preventDefault()
 			if (this.formValidator.validate()) {

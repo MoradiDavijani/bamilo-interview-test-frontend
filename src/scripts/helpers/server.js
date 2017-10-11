@@ -37,6 +37,7 @@ class Server {
 	}
 	
 	_request (method, route, onSuccess, onError, onComplete, data) {
+		this._normalize(data)
 		let token = localStorage.getItem('token')
 		$.ajax({
 			url: `${this.url}${route}`,
@@ -57,6 +58,17 @@ class Server {
 				onError && onError(error)
 			},
 			complete: onComplete
+		})
+	}
+	
+	_normalize (data) {
+		if (!data) {
+			return
+		}
+		Object.keys(data).forEach((key) => {
+			if (!data[key]) {
+				delete data[key]
+			}
 		})
 	}
 }

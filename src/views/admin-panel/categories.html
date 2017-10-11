@@ -1,9 +1,42 @@
 <div class="admin-categories-page">
     <div class="card" flex-xs-grow>
-        <div class="">
+        <div class="card-body">
             <h4 class="card-header">Categories List
                 <button type="button" id="reload" class="btn btn-secondary">Refresh</button>
+                <button type="button" id="newItem" class="btn btn-secondary">New Category</button>
             </h4>
+            <div class="collapse" id="newItemForm">
+                <div class="card">
+                    <h6 class="card-header">Category Form</h6>
+                    <div class="card-body">
+                        <form name="categoryForm" class="mt-3" layout="column" layout-align="start start" novalidate>
+                            <input type="hidden" id="_id">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title"
+                                       placeholder="Enter title" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid title.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="parent">Parent Category</label>
+                                <select name="parent" id="parent"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="attributes">Category Attributes</label>
+                                <select name="attributes" id="attributes" multiple></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea type="text" class="form-control" id="description"
+                                          placeholder="Enter description"></textarea>
+                            </div>
+                            <button type="submit" name="save" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div id="treeview"></div>
         </div>
     </div>
