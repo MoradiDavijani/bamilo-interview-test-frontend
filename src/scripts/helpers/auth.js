@@ -4,8 +4,13 @@ import ServerSingleton from '../helpers/server'
 const server = new ServerSingleton()
 
 const validateUserToken = (next) => {
+	if (window.app.user && window.app.user.username) {
+		next()
+		return
+	}
 	server.fetch('/auth', (result) => {
 		if (result && result.username) {
+			window.app.user = result
 			next()
 		}
 		else {

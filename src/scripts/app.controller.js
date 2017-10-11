@@ -5,6 +5,10 @@ import * as router from './app.router'
 
 console.info('Application Started')
 
+window.app = {
+	title: 'Bamilo'
+}
+
 router.init()
 sidebar.init()
 
