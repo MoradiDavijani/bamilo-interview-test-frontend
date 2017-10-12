@@ -1,0 +1,30 @@
+.products-page {
+  .product-item {
+    height: 430px;
+    transition: border-color .2s;
+    &:not(:hover) {
+      border-color: $white;
+    }
+    img {
+      height: 262px;
+      width: 210px;
+    }
+    .card-body {
+      width: 230px;
+    }
+  }
+
+  .pagination {
+    .page-item {
+      .page-link {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .treeview {
+    .list-group-item {
+      padding-left: 2px;
+    }
+  }
+}

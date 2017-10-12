@@ -46,7 +46,12 @@ class Server {
 			},
 			data,
 			method,
-			success: onSuccess,
+			success: (result) => {
+				if (result.message) {
+					toastr.success('Product successfully reserved for you!', 'Reserved')
+				}
+				onSuccess(result)
+			},
 			error: (error) => {
 				if (error.status === 403) {
 					localStorage.removeItem('token')

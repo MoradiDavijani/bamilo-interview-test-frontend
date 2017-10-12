@@ -93,7 +93,7 @@ class AdminCategoriesPage {
 				let $tr = $(e.target).closest('[data-id]')
 				this.populateForm($tr)
 			})
-			.on('click', '.admin-categories-page #treeview .delete', (e) => {
+			.on('click', '.delete', (e) => {
 				if (!$(e.target).is('.treeview-button')) {
 					// This is to prevent conflict in other pages
 					// ToDo: fix this!

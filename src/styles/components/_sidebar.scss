@@ -1,7 +1,6 @@
-.sidebar {
+.sidebar,
+.sidenav {
   z-index: 10000;
-  min-width: $sidebarWidth;
-  max-width: $sidebarWidth;
   background-color: $gray-400;
   transition: all .2s linear;
   margin-left: -$sidebarWidth;
@@ -9,6 +8,17 @@
     margin-left: 0;
   }
 
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.sidenav {
+  min-width: $sidenavWidth;
+  max-width: $sidenavWidth;
+}
+.sidebar {
+  min-width: $sidebarWidth;
+  max-width: $sidebarWidth;
   @include media-breakpoint-down(sm) {
     position: absolute;
     top: $footerHeight;

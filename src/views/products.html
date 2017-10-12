@@ -1,1 +1,42 @@
-<h1>Products Page</h1>
+<div class="products-page" layout="row" layout-align="stretch center" flex-grow>
+    <nav class="sidenav active">
+        <div id="treeview"></div>
+        <div class="sidebar-header mt-3 pt-3 pl-1">
+            <h5>Attributes</h5>
+        </div>
+        <div class="dropdown-divider"></div>
+        <ul class="nav pl-3" layout="column">
+            <h6>Coming Soon...!</h6>
+        </ul>
+    </nav>
+    <section layout="column" flex>
+        <section id="productsContainer" class="p-3" layout="row" layout-align="start start" layout-wrap flex></section>
+        <span flex></span>
+        <section id="paginationContainer" layout="row" layout-align="center center"></section>
+    </section>
+
+
+    <!-- Inline Templates -->
+    <script id="productTemplate" type="text/x-custom-template">
+        <div data-id="@ID" class="product-item card pt-2 mb-3 mr-3" layout="column" layout-align="start center">
+            <img class="card-img-top border" src="@IMGURL" alt="@DESCRIPTION">
+            <div class="card-body" layout="column">
+                <p class="card-title">@MODEL @TITLE</p>
+                <h6 class="card-text">@PRICE T</h6>
+                <span flex></span>
+                <a role="button" data-action="buy" class="btn @BTNCLASS float-right">@ACTION</a>
+            </div>
+        </div>
+    </script>
+    <script id="paginationTemplate" type="text/x-custom-template">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" data-page="prev"><a class="page-link" role="button">Previous</a></li>
+                <li class="page-item" data-page="first"><a class="page-link" role="button">@PREV</a></li>
+                <li class="page-item" data-page="second"><a class="page-link" role="button">@CURRENT</a></li>
+                <li class="page-item" data-page="third"><a class="page-link" role="button">@NEXT</a></li>
+                <li class="page-item" data-page="next"><a class="page-link" role="button">Next</a></li>
+            </ul>
+        </nav>
+    </script>
+</div>
