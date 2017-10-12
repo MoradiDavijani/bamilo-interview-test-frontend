@@ -1,16 +1,10 @@
 html {
-  position: relative;
   display: flex;
   min-height: 100%;
   min-width: 320px;
 }
 
-body {
-  margin-bottom: $footerHeight;
-}
-
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   height: $footerHeight;

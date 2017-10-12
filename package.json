@@ -4,8 +4,8 @@
   "description": "Frontend for the test project in Bamilo interview",
   "scripts": {
     "test": "grunt lint",
-    "start": "NODE_ENV=dev grunt build",
-    "build": "NODE_ENV=production grunt build",
+    "dev": "NODE_ENV=dev grunt build",
+    "start": "NODE_ENV=production grunt build",
     "commit": "commit-wizard"
   },
   "repository": {
