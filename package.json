@@ -1,6 +1,6 @@
 {
   "name": "bamilo-interview-test-frontend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Frontend for the test project in Bamilo interview",
   "scripts": {
     "test": "grunt lint",
